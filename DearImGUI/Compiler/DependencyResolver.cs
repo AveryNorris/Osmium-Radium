@@ -39,7 +39,7 @@ public static class DependencyResolver
     /// <summary> Finds all the trusted platform assembly paths, that give essential C# types</summary>
     //public static string[] GetTrustedPlatformLibraryPaths() => AppContext.GetData("TRUSTED_PLATFORM_ASSEMBLIES")!.ToString()!.Split(Path.PathSeparator);
     /// <summary> Finds all the external modules that are present in the current plugin directory</summary>
-    public static string[] GetExternalModulePaths() => Directory.GetFiles(PluginPath, "*.dll");
+    public static string[] GetExternalModulePaths() => Directory.GetFiles(PluginPath, "*.dll", SearchOption.AllDirectories);
 
     //todo: add extension checks to prevent compiling txt lol
     

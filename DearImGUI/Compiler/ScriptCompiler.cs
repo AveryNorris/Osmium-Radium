@@ -1,6 +1,7 @@
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Emit;
+using OsmiumNucleus;
 
 
 namespace DearImGUI.Compiler;
@@ -8,12 +9,16 @@ namespace DearImGUI.Compiler;
 
 public static class ScriptCompiler
 {
-    public static void CompileScripts() {
+    public static string ProgramName = "0";
+    
+    //returns a stream from a newly compiled script
+    public static MemoryStream CompileScripts() {
+        
 
         List<SyntaxTree> scriptTrees = [];
         
         //todo: clean up add docs
-        foreach (string file in Directory.GetFiles(ChangeDetection.SourcePath, "*.cs")) {
+        foreach (string file in Directory.GetFiles(ChangeDetection.SourcePath, "*.cs", SearchOption.AllDirectories)) {
             
             Console.WriteLine(file);
             
@@ -21,11 +26,11 @@ public static class ScriptCompiler
         }
         
         //todo: make it easy to create modules add some editor option
-        Compilation compiledProgram = CSharpCompilation.Create("OsmiumProgram", scriptTrees, DependencyResolver.GetDependencies(), new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
+        Compilation compiledProgram = CSharpCompilation.Create("OsmiumProgram", scriptTrees, DependencyResolver.GetDependencies(), options: new CSharpCompilationOptions(OutputKind.DynamicallyLinkedLibrary));
         
         
         //todo: temp
-        using FileStream stream = new FileStream("/home/avery/Programming/DearImGUI/DearImGUI/Build/OsmiumProgram.dll", FileMode.Create);
+        MemoryStream stream = new MemoryStream();
         EmitResult result = compiledProgram.Emit(stream);
         
         if (!result.Success)
@@ -39,5 +44,9 @@ public static class ScriptCompiler
         {
             Console.WriteLine("DLL compiled successfully!");
         }
+
+        stream.Position = 0;
+        
+        return stream;
     }
 }

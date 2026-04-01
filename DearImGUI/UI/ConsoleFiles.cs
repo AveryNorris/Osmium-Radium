@@ -1,4 +1,5 @@
 using System.Numerics;
+using System.Text;
 using ImGuiNET;
 using OsmiumNucleus;
 
@@ -17,13 +18,19 @@ public class ConsoleFiles : IFreeElement
         ImGui.SetWindowSize(Radium.ScreenPercentToRealPos(65, 29));
         ImGui.SetWindowPos(Radium.ScreenPercentToRealPos(0, 71.5f));
         
-        ImGui.BeginTabBar("##ConsoleFilesTabBar");
+        ImGui.BeginTabBar("##DebugFilesTabBar");
 
-        if (ImGui.BeginTabItem("Console")) {
+        if (ImGui.BeginTabItem("Debug")) {
 
             ImGui.BeginChild("ScrollableRegion");
+
+            StringBuilder text = new StringBuilder();
+
+            foreach (string message in Debug.Output) {
+                text.Append(message);
+            }
             
-            ResolveDebugText(File.ReadAllText(Debug.LogFilePath));
+            ResolveDebugText(text.ToString());
 
             
             ImGui.EndChild();

@@ -53,7 +53,8 @@ public class ColorSelector : IGUIElement
     public static ImGuiCol[] Background2ColorObjects = [
         ImGuiCol.Border,
         ImGuiCol.BorderShadow,
-        ImGuiCol.ScrollbarBg
+        ImGuiCol.ScrollbarBg,
+        ImGuiCol.MenuBarBg
     ];
     
     public string Name { get; set; } = "ColorSelector";

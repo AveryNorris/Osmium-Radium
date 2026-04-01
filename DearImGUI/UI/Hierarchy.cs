@@ -8,7 +8,7 @@ namespace DearImGUI;
 public class Hierarchy : IFreeElement
 {
 
-    public static Component? selectedComponent { get; private set; } = null;
+    public static Component? selectedComponent { get; set; } = null;
     
     public string Name { get; set; } = "Hierarchy";
 
@@ -32,6 +32,10 @@ public class Hierarchy : IFreeElement
 
         foreach (Component component in SceneView.selectedScene.Children) {
             MapComponent(component, 0);
+        }
+        
+        if (ImGui.Button("+")) {
+            GUIManager.FreeElements.Add(new ComponentAdditionScreen());
         }
         
         ImGui.End();

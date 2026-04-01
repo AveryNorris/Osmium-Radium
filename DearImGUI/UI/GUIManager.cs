@@ -16,6 +16,8 @@ public static class GUIManager
     
     public static List<IFreeElement> FreeElements = [];
     
+    public static List<IRadiumGUI>  RadiumElements = [];
+    
     public static bool forceConstruct = false;
     
     public static int ShaderProgram;
@@ -158,7 +160,7 @@ public static class GUIManager
         );
 
         //todo: error point use event args
-        io.DeltaTime = (float) Osmium.DeltaTime;
+        io.DeltaTime = (float) e.Time;
         
         Matrix4 projection = Matrix4.CreateOrthographicOffCenter(
             0.0f,
@@ -201,6 +203,10 @@ public static class GUIManager
 
         foreach (IFreeElement element in FreeElements.ToList()) {
             element.Define();
+        }
+
+        foreach (IRadiumGUI element in RadiumElements.ToList()) {
+            element.OnGUI();
         }
         
         

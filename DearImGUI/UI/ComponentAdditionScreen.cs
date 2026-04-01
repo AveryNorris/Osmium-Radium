@@ -78,6 +78,22 @@ public class ComponentAdditionScreen : IFreeElement
                                     newComponent.Name = type.Name;
                                     
                                     Hierarchy.selectedComponent?.Add(newComponent);
+                                    Radium.ComponentMap.Add(new Radium.DefaultComponent(type.Name, new Radium.ReferencedType(type), [], SceneView.selectedScene!.Name));
+                                }
+                            }
+                        }
+                    }
+                } else if(SceneView.selectedScene != null) {
+                    if (selectedType != null) {
+
+                        foreach (Assembly assembly in Radium.LoadedProgram.Assemblies) {
+                            foreach (Type type in assembly.GetTypes()) {
+                                if (type.IsSubclassOf(typeof(Component)) && type.Name.Contains(input)) {
+                                    Component newComponent =  (Component)Activator.CreateInstance(type)!;
+                                    newComponent.Name = type.Name;
+                                    
+                                    SceneView.selectedScene?.Add(newComponent);
+                                    Radium.ComponentMap.Add(new Radium.DefaultComponent(type.Name, new Radium.ReferencedType(type), [], SceneView.selectedScene!.Name));
                                 }
                             }
                         }

@@ -10,7 +10,7 @@ using Osmium2DRenderer;
 
 
 //todo: editor initalize
-Osmium.Initialize();
+Osmium.EditorInitialize();
 
 GUIManager.Clear = true;
 GUIManager.FreeElements.Add(new Hierarchy());
@@ -19,12 +19,12 @@ GUIManager.FreeElements.Add(new ConsoleFiles());
 GUIManager.FreeElements.Add(new PlayButton());
 GUIManager.FreeElements.Add(new TopMenu());
 
-GUIManager.GUIElements.Add(new SceneView());
+GUIManager.RadiumElements.Add(new SceneView());
 
 ImGuiStylePtr style = ImGui.GetStyle();
 style.TabRounding = 0;
 
-GUIManager.Clear = false;
+//todo: GUIManager.Clear = false;
 
 
 style.Colors[(int)ImGuiCol.ModalWindowDimBg] = Vector4.Zero;
@@ -72,4 +72,9 @@ foreach (ImGuiCol color in ColorSelector.Background2ColorObjects) {
 
 //main.Add<TestComponent>();
 
-Osmium.Run();
+Debug.WriteToConsole = true;
+
+GUIManager.Clear = true;
+GUIManager.Swap = true;
+
+Osmium.EditorRun();
