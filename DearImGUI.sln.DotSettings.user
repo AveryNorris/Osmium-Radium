@@ -1,0 +1,8 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=_002Fhome_002Favery_002FProgramming_002FDearImGUI_002FDearImGUI_002FModules_002FEditorAttributes_002Edll/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=_002Fhome_002Favery_002FProjects_002FAwperative_002FModules_002F2DRenderer_002F2DRenderer_002Fbin_002FDebug_002Fnet9_002E0_002F2DRenderer_002Edll/@EntryIndexedValue">True</s:Boolean>
+	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;
+  &lt;Assembly Path="/home/avery/Programming/DearImGUI/DearImGUI/Modules/EditorAttributes.dll" /&gt;
+  &lt;Assembly Path="/home/avery/Programming/DearImGUI/DearImGUI/Build/OsmiumProgram.dll" /&gt;
+  &lt;Assembly Path="/home/avery/Programming/DearImGUI/DearImGUI/Modules/Geometry2D.dll" /&gt;
+&lt;/AssemblyExplorer&gt;</s:String></wpf:ResourceDictionary>
